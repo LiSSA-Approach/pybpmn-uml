@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- {"backgroundSize":1000} -->
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.omg.org/spec/UML/20161101" targetNamespace="" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
+  <process id="Process_1gpwvpe">
+    <uml:Class id="Class_09fpan1">
+      <outgoing>Aggregation_1wu07wq</outgoing>
+      <outgoing>Dependency_08ts2ks</outgoing>
+    </uml:Class>
+    <uml:Class id="Class_1lhjhto">
+      <incoming>Aggregation_1wu07wq</incoming>
+      <incoming>Extension_189dkip</incoming>
+    </uml:Class>
+    <uml:Class id="Class_0nlf33i">
+      <outgoing>Extension_189dkip</outgoing>
+      <outgoing>Association_04k7nxy</outgoing>
+    </uml:Class>
+    <uml:Class id="Class_08l3q34">
+      <incoming>Association_04k7nxy</incoming>
+      <outgoing>Realization_1gy4xbe</outgoing>
+    </uml:Class>
+    <uml:Interface id="Interface_00l70d3">
+      <incoming>Realization_1gy4xbe</incoming>
+      <incoming>Dependency_08ts2ks</incoming>
+    </uml:Interface>
+    <uml:Aggregation id="Aggregation_1wu07wq" sourceRef="Class_09fpan1" targetRef="Class_1lhjhto" />
+    <uml:Extension id="Extension_189dkip" sourceRef="Class_0nlf33i" targetRef="Class_1lhjhto" />
+    <uml:Association id="Association_04k7nxy" sourceRef="Class_0nlf33i" targetRef="Class_08l3q34" />
+    <uml:Realization id="Realization_1gy4xbe" sourceRef="Class_08l3q34" targetRef="Interface_00l70d3" />
+    <uml:Dependency id="Dependency_08ts2ks" sourceRef="Class_09fpan1" targetRef="Interface_00l70d3" />
+    <uml:Label id="Label_10wvj1i" text_belongs_to="Aggregation_1wu07wq" label_type="target_multiplicity">
+      <text>1</text>
+    </uml:Label>
+    <uml:Label id="Label_1l7dk36" text_belongs_to="Association_04k7nxy" label_type="edge_labeling">
+      <text>d</text>
+    </uml:Label>
+    <uml:Label id="Label_1st7w6g" text_belongs_to="Realization_1gy4xbe" label_type="edge_labeling">
+      <text>&lt;&lt;realize&gt;&gt;</text>
+    </uml:Label>
+    <uml:Label id="Label_1f2vsle" text_belongs_to="Class_09fpan1" label_type="class_name">
+      <text>ClassA</text>
+    </uml:Label>
+    <uml:Label id="Label_09u7peq" text_belongs_to="Class_09fpan1" label_type="attribute">
+      <text>-attribute</text>
+    </uml:Label>
+    <uml:Label id="Label_0e0ngeq" text_belongs_to="Class_09fpan1" label_type="method">
+      <text>+getAttribute()</text>
+    </uml:Label>
+    <uml:Label id="Label_1wjv8v7" text_belongs_to="Interface_00l70d3" label_type="class_name">
+      <text>&lt;&lt;interface&gt;&gt; InterfaceA</text>
+    </uml:Label>
+    <uml:Label id="Label_0qwec8g" text_belongs_to="Class_1lhjhto" label_type="class_name">
+      <text>ClassB</text>
+    </uml:Label>
+    <uml:Label id="Label_1m8214n" text_belongs_to="Class_0nlf33i" label_type="class_name">
+      <text>ClassC</text>
+    </uml:Label>
+    <uml:Label id="Label_046e793" text_belongs_to="Class_08l3q34" label_type="class_name">
+      <text>Class D</text>
+    </uml:Label>
+  </process>
+  <bpmndi:BPMNDiagram id="sid-74620812-92c4-44e5-949c-aa47393d3830">
+    <bpmndi:BPMNPlane id="sid-cdcae759-2af7-4a6d-bd02-53f3352a731d" bpmnElement="Process_1gpwvpe">
+      <bpmndi:BPMNShape id="Label_10wvj1i_di" bpmnElement="Label_10wvj1i">
+        <omgdc:Bounds x="634" y="128" width="15" height="14" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_1l7dk36_di" bpmnElement="Label_1l7dk36">
+        <omgdc:Bounds x="754" y="386" width="19" height="29" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_1st7w6g_di" bpmnElement="Label_1st7w6g">
+        <omgdc:Bounds x="464" y="482" width="154" height="18" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Aggregation_1wu07wq_di" bpmnElement="Aggregation_1wu07wq">
+        <omgdi:waypoint x="452" y="148" />
+        <omgdi:waypoint x="655" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Extension_189dkip_di" bpmnElement="Extension_189dkip">
+        <omgdi:waypoint x="739" y="282" />
+        <omgdi:waypoint x="739" y="174" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_04k7nxy_di" bpmnElement="Association_04k7nxy">
+        <omgdi:waypoint x="736" y="353" />
+        <omgdi:waypoint x="736" y="473" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Realization_1gy4xbe_di" bpmnElement="Realization_1gy4xbe">
+        <omgdi:waypoint x="647" y="509" />
+        <omgdi:waypoint x="392" y="509" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Dependency_08ts2ks_di" bpmnElement="Dependency_08ts2ks">
+        <omgdi:waypoint x="336" y="249" />
+        <omgdi:waypoint x="336" y="401" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Class_09fpan1_di" bpmnElement="Class_09fpan1">
+        <omgdc:Bounds x="148" y="85" width="304" height="164" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_1f2vsle_di" bpmnElement="Label_1f2vsle">
+        <omgdc:Bounds x="195" y="104" width="161" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_09u7peq_di" bpmnElement="Label_09u7peq">
+        <omgdc:Bounds x="166" y="177" width="111" height="23" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_0e0ngeq_di" bpmnElement="Label_0e0ngeq">
+        <omgdc:Bounds x="153" y="211" width="199" height="33" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Class_1lhjhto_di" bpmnElement="Class_1lhjhto">
+        <omgdc:Bounds x="655" y="106" width="191" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_0qwec8g_di" bpmnElement="Label_0qwec8g">
+        <omgdc:Bounds x="689" y="112" width="109" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Class_0nlf33i_di" bpmnElement="Class_0nlf33i">
+        <omgdc:Bounds x="650" y="282" width="216" height="71" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_1m8214n_di" bpmnElement="Label_1m8214n">
+        <omgdc:Bounds x="684" y="294" width="123" height="38" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Class_08l3q34_di" bpmnElement="Class_08l3q34">
+        <omgdc:Bounds x="647" y="473" width="212" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_046e793_di" bpmnElement="Label_046e793">
+        <omgdc:Bounds x="666" y="487" width="150" height="38" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Interface_00l70d3_di" bpmnElement="Interface_00l70d3">
+        <omgdc:Bounds x="99" y="401" width="293" height="143" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Label_1wjv8v7_di" bpmnElement="Label_1wjv8v7">
+        <omgdc:Bounds x="134" y="412" width="175" height="61" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581">
+      <omgdc:Font name="Arial" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" />
+    </bpmndi:BPMNLabelStyle>
+    <bpmndi:BPMNLabelStyle id="sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b">
+      <omgdc:Font name="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" />
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,0 +1,4 @@
+filename,split
+umlDiagram_train,train
+umlDiagram_test,test
+umlDiagram_val,val
