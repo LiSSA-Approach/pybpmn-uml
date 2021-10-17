@@ -6,7 +6,7 @@ from pybpmn.uml_parser import UmlParser
 def test_parse_bpmn():
     resource_path = Path(__file__).resolve().parent / "resources"
     bpmn_path = resource_path / "umlDiagram.bpmn"
-    img_path = resource_path / "umlDiagram.jpg"
+    img_path = resource_path / "umlDiagram.jpeg"
 
     parser = UmlParser()
     ai = parser.parse_bpmn_img(bpmn_path, img_path)
