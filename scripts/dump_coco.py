@@ -9,8 +9,12 @@ from IPython.core import ultratb
 from yamlu.coco import CocoDatasetExport
 
 import pybpmn
-from pybpmn.constants import VALID_SPLITS
+from pybpmn.constants import VALID_SPLITS, DEFAULT_MODE
 from pybpmn.dataset import HdBpmnDataset
+
+# UML-Extension
+from pybpmn.mode import Mode
+from pybpmn.uml_dataset import UmlDataset
 
 # fallback to debugger on error
 sys.excepthook = ultratb.FormattedTB(mode="Verbose", color_scheme="Linux", call_pdb=1)
@@ -25,6 +29,7 @@ _logger = logging.getLogger(__name__)
 @click.option("--n_jobs", default=None, type=int)
 @click.option("--write_img", default=True, type=bool)
 @click.option("--write_ann_img", default=False, type=bool)
+@click.option("--mode", default=DEFAULT_MODE, type=Mode)
 @click.option("--splits", "-s", multiple=True, default=list(VALID_SPLITS))
 @click.option("--quiet", "log_level", flag_value=logging.WARNING)
 @click.option("-v", "--verbose", "log_level", flag_value=logging.INFO, default=True)
@@ -37,13 +42,17 @@ def main(
         n_jobs: Optional[int],
         write_img: bool,
         write_ann_img: bool,
+        mode: Mode,
         splits: List[str],
         log_level: int,
 ):
     logging.basicConfig(format="%(asctime)s %(levelname)s - %(message)s", level=log_level)
     # logging.getLogger("yamlu.img").setLevel(logging.ERROR)
 
-    ds = HdBpmnDataset(hdbpmn_root=hdbpmn_root, coco_dataset_root=coco_dataset_root)
+    if (mode == Mode.BPMN):
+        ds = HdBpmnDataset(hdbpmn_root=hdbpmn_root, coco_dataset_root=coco_dataset_root)
+    else:
+        ds = UmlDataset(uml_dataset_root=hdbpmn_root, coco_dataset_root=coco_dataset_root)
 
     exporter = CocoDatasetExport(
         ds=ds,

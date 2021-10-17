@@ -1,3 +1,5 @@
+from pybpmn.mode import Mode
+
 VALID_SPLITS = ("train", "val", "test")
 
 # --- Relations ---
@@ -7,3 +9,6 @@ TEXT_BELONGS_TO_REL = "text_belongs_to"
 ARROW_KEYPOINT_FIELDS = ("tail", "head")
 ARROW_RELATIONS = (ARROW_PREV_REL, ARROW_NEXT_REL)
 RELATIONS = (*ARROW_RELATIONS, TEXT_BELONGS_TO_REL)
+
+# UML-Extension constants
+DEFAULT_MODE = Mode.UML_CLASS
