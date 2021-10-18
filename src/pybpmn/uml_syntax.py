@@ -9,7 +9,9 @@ ENUMERATION = "Enumeration"
 ABSTRACT_CLASS = "AbstractClass"
 QUALIFIER = "Qualifier"
 N_ARY_ASSO_DIA = "NAryAssociationDiamond"
-UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS, QUALIFIER, N_ARY_ASSO_DIA]
+PACKAGE = "Package"
+COMMENT = "Comment"
+UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS, QUALIFIER, N_ARY_ASSO_DIA, PACKAGE, COMMENT]
 
 # All available UML label categories
 LABEL = "Label"
@@ -22,7 +24,8 @@ COMPOSITION = "Composition"
 EXTENSION = "Extension"
 DEPENDENCY = "Dependency"
 REALIZATION = "Realization"
-UML_EDGE_CATEGORIES = [ASSOCIATION, AGGREGATION, COMPOSITION, EXTENSION, DEPENDENCY, REALIZATION]
+COMMENT_CONNECTION = "CommentConnection"
+UML_EDGE_CATEGORIES = [ASSOCIATION, AGGREGATION, COMPOSITION, EXTENSION, DEPENDENCY, REALIZATION, COMMENT_CONNECTION]
 
 # All available UML category groups
 CATEGORY_GROUPS = {
@@ -39,13 +42,16 @@ CATEGORY_TO_LONG_NAME = {
     ABSTRACT_CLASS: "Abstract Class",
     QUALIFIER: "Qualifier",
     N_ARY_ASSO_DIA: "N-Ary Association Diamond",
+    PACKAGE: "Package",
+    COMMENT: "Comment",
     LABEL: "Label",
     ASSOCIATION: "Association",
     AGGREGATION: "Aggregation",
     COMPOSITION: "Composition",
     EXTENSION: "Extension",
     DEPENDENCY: "Dependency",
-    REALIZATION: "Realization"
+    REALIZATION: "Realization",
+    COMMENT_CONNECTION: "Comment Connection"
 }
 
 ALL_CATEGORIES = yamlu.flatten(CATEGORY_GROUPS.values())

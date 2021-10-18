@@ -36,7 +36,7 @@
     <uml:Label id="Label_1st7w6g" belongs_to="Realization_1gy4xbe" label_type="edge_labeling">
       <text>&lt;&lt;realize&gt;&gt;</text>
     </uml:Label>
-    <uml:Label id="Label_1f2vsle" belongs_to="Class_09fpan1" label_type="class_name">
+    <uml:Label id="Label_1f2vsle" belongs_to="Class_09fpan1" label_type="name">
       <text>ClassA</text>
     </uml:Label>
     <uml:Label id="Label_09u7peq" belongs_to="Class_09fpan1" label_type="attribute">
@@ -45,16 +45,16 @@
     <uml:Label id="Label_0e0ngeq" belongs_to="Class_09fpan1" label_type="method">
       <text>+getAttribute()</text>
     </uml:Label>
-    <uml:Label id="Label_1wjv8v7" belongs_to="Interface_00l70d3" label_type="class_name">
+    <uml:Label id="Label_1wjv8v7" belongs_to="Interface_00l70d3" label_type="name">
       <text>&lt;&lt;interface&gt;&gt; InterfaceA</text>
     </uml:Label>
-    <uml:Label id="Label_0qwec8g" belongs_to="Class_1lhjhto" label_type="class_name">
+    <uml:Label id="Label_0qwec8g" belongs_to="Class_1lhjhto" label_type="name">
       <text>ClassB</text>
     </uml:Label>
-    <uml:Label id="Label_1m8214n" belongs_to="Class_0nlf33i" label_type="class_name">
+    <uml:Label id="Label_1m8214n" belongs_to="Class_0nlf33i" label_type="name">
       <text>ClassC</text>
     </uml:Label>
-    <uml:Label id="Label_046e793" belongs_to="Class_08l3q34" label_type="class_name">
+    <uml:Label id="Label_046e793" belongs_to="Class_08l3q34" label_type="name">
       <text>Class D</text>
     </uml:Label>
   </process>
