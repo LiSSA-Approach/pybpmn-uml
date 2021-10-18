@@ -14,7 +14,7 @@ from pybpmn.constants import (
     ARROW_NEXT_REL,
     ARROW_PREV_REL,
     ARROW_RELATIONS,
-    TEXT_BELONGS_TO_REL
+    BELONGS_TO_REL
 )
 
 from pybpmn.util import bounds_to_bb, to_int_or_float, get_omgdi_ns, parse_annotation_background_width
@@ -42,7 +42,7 @@ class UmlParser:
             },
             img_max_size_ref: int = 1000,
             excluded_categories: Set[str] = None,
-            link_text_rel_two_way: bool = False,
+            link_belongs_rel_two_way: bool = False,
     ):
         """
         :param marker_min_widths: pad edge bounding boxes so that their w and h is at least marker_min_width of specific edge type
@@ -52,7 +52,7 @@ class UmlParser:
         self.marker_min_widths = marker_min_widths
         self.img_max_size_ref = img_max_size_ref
         self.excluded_categories = {} if excluded_categories is None else excluded_categories
-        self.link_text_rel_two_way = link_text_rel_two_way
+        self.link_belongs_rel_two_way = link_belongs_rel_two_way
 
     def _is_included_ann(self, a: Annotation) -> bool:
         if a.category in self.excluded_categories:
@@ -145,19 +145,19 @@ class UmlParser:
         edge_anns = yamlu.flatten(edge_anns)
 
         anns = shape_anns + edge_anns
-        self._link_text_rel_anns(anns)
+        self._link_belongs_rel_anns(anns)
         return anns
 
-    def _link_text_rel_anns(self, anns):
+    def _link_belongs_rel_anns(self, anns):
         id_to_ann = {a.id: a for a in anns if a.category != uml_syntax.LABEL}
 
-        lbl_anns = [a for a in anns if a.category == uml_syntax.LABEL]
+        belongs_anns = [a for a in anns if (a.category == uml_syntax.LABEL or a.category == uml_syntax.QUALIFIER)]
 
-        for lbl_ann in lbl_anns:
-            symb_ann = id_to_ann[lbl_ann.get(TEXT_BELONGS_TO_REL)]
-            lbl_ann.set(TEXT_BELONGS_TO_REL, symb_ann)
-            if self.link_text_rel_two_way:
-                symb_ann.set(TEXT_BELONGS_TO_REL, lbl_ann)
+        for belongs_ann in belongs_anns:
+            symb_ann = id_to_ann[belongs_ann.get(BELONGS_TO_REL)]
+            belongs_ann.set(BELONGS_TO_REL, symb_ann)
+            if self.link_belongs_rel_two_way:
+                symb_ann.set(BELONGS_TO_REL, belongs_ann)
 
 
 def get_tag_without_ns(element: Element):

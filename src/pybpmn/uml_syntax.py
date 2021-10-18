@@ -7,7 +7,9 @@ CLASS = "Class"
 INTERFACE = "Interface"
 ENUMERATION = "Enumeration"
 ABSTRACT_CLASS = "AbstractClass"
-UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS]
+QUALIFIER = "Qualifier"
+N_ARY_ASSO_DIA = "NAryAssociationDiamond"
+UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS, QUALIFIER, N_ARY_ASSO_DIA]
 
 # All available UML label categories
 LABEL = "Label"
@@ -35,6 +37,8 @@ CATEGORY_TO_LONG_NAME = {
     INTERFACE: "Interface",
     ENUMERATION: "Enumeration",
     ABSTRACT_CLASS: "Abstract Class",
+    QUALIFIER: "Qualifier",
+    N_ARY_ASSO_DIA: "N-Ary Association Diamond",
     LABEL: "Label",
     ASSOCIATION: "Association",
     AGGREGATION: "Aggregation",

@@ -27,34 +27,34 @@
     <uml:Association id="Association_04k7nxy" sourceRef="Class_0nlf33i" targetRef="Class_08l3q34" />
     <uml:Realization id="Realization_1gy4xbe" sourceRef="Class_08l3q34" targetRef="Interface_00l70d3" />
     <uml:Dependency id="Dependency_08ts2ks" sourceRef="Class_09fpan1" targetRef="Interface_00l70d3" />
-    <uml:Label id="Label_10wvj1i" text_belongs_to="Aggregation_1wu07wq" label_type="target_multiplicity">
+    <uml:Label id="Label_10wvj1i" belongs_to="Aggregation_1wu07wq" label_type="target_multiplicity">
       <text>1</text>
     </uml:Label>
-    <uml:Label id="Label_1l7dk36" text_belongs_to="Association_04k7nxy" label_type="edge_labeling">
+    <uml:Label id="Label_1l7dk36" belongs_to="Association_04k7nxy" label_type="edge_labeling">
       <text>d</text>
     </uml:Label>
-    <uml:Label id="Label_1st7w6g" text_belongs_to="Realization_1gy4xbe" label_type="edge_labeling">
+    <uml:Label id="Label_1st7w6g" belongs_to="Realization_1gy4xbe" label_type="edge_labeling">
       <text>&lt;&lt;realize&gt;&gt;</text>
     </uml:Label>
-    <uml:Label id="Label_1f2vsle" text_belongs_to="Class_09fpan1" label_type="class_name">
+    <uml:Label id="Label_1f2vsle" belongs_to="Class_09fpan1" label_type="class_name">
       <text>ClassA</text>
     </uml:Label>
-    <uml:Label id="Label_09u7peq" text_belongs_to="Class_09fpan1" label_type="attribute">
+    <uml:Label id="Label_09u7peq" belongs_to="Class_09fpan1" label_type="attribute">
       <text>-attribute</text>
     </uml:Label>
-    <uml:Label id="Label_0e0ngeq" text_belongs_to="Class_09fpan1" label_type="method">
+    <uml:Label id="Label_0e0ngeq" belongs_to="Class_09fpan1" label_type="method">
       <text>+getAttribute()</text>
     </uml:Label>
-    <uml:Label id="Label_1wjv8v7" text_belongs_to="Interface_00l70d3" label_type="class_name">
+    <uml:Label id="Label_1wjv8v7" belongs_to="Interface_00l70d3" label_type="class_name">
       <text>&lt;&lt;interface&gt;&gt; InterfaceA</text>
     </uml:Label>
-    <uml:Label id="Label_0qwec8g" text_belongs_to="Class_1lhjhto" label_type="class_name">
+    <uml:Label id="Label_0qwec8g" belongs_to="Class_1lhjhto" label_type="class_name">
       <text>ClassB</text>
     </uml:Label>
-    <uml:Label id="Label_1m8214n" text_belongs_to="Class_0nlf33i" label_type="class_name">
+    <uml:Label id="Label_1m8214n" belongs_to="Class_0nlf33i" label_type="class_name">
       <text>ClassC</text>
     </uml:Label>
-    <uml:Label id="Label_046e793" text_belongs_to="Class_08l3q34" label_type="class_name">
+    <uml:Label id="Label_046e793" belongs_to="Class_08l3q34" label_type="class_name">
       <text>Class D</text>
     </uml:Label>
   </process>
