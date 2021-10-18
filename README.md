@@ -1,6 +1,22 @@
 ![run_tests workflow](https://github.com/dwslab/pybpmn/actions/workflows/run_tests.yaml/badge.svg)
 
-# pybpmn
+# pybmn-uml 
+
+This fork aims to extend [pybpmn](https://github.com/dwslab/pybpmn) to handle UML class diagram images annotated with the [uml-image-annotator](https://github.com/LiSSA-Approach/uml-image-annotator) and to convert them into a [COCO] dataset.
+
+This repository also provides an [example dataset](./example-dataset) consisting of 1 hand-sketched UML class diagram and its corresponding BPMN XML file to showcase how to be converted UML data needs to be structured.
+In this example, they are used for training, test and validation at the same time. 
+
+The [demo.ipynb](./notebooks/demo.ipynb) Jupyter notebook can still be used to visualize the extracted bounding boxes over a hand-sketched UML class diagram.
+
+You can convert the example dataset into a [COCO] dataset by executing the [dump_coco.py](./scripts/dump_coco.py) script with the following command:
+```shell
+python scripts/dump_coco.py ./example-dataset/uml-dataset ./example-dataset/coco
+```
+
+[Installation](#installation), [Development](#development) and [Dependency Management](#dependency-management) hasn't changed.
+
+## README of original repository - pybmn
 
 Starter code for using the [hdBPMN] dataset for diagram recognition research.
 
@@ -15,7 +31,7 @@ Moreover, the [demo.ipynb](./notebooks/demo.ipynb) Jupyter notebook can be used 
 and (2) the annotated BPMN diagram overlayed over the hand-drawn image.
 Note that the latter requires the [bpmn-to-image] tool, which in turn requires a nodejs installation.
 
-## Installation
+### Installation
 
 In order to set up the necessary environment:
 
@@ -28,7 +44,7 @@ In order to set up the necessary environment:
    conda activate pybpmn
    ```
 
-## Development
+### Development
 
 > **_NOTE:_**  The conda environment will have pybpmn installed in editable mode.
 > Some changes, e.g. in `setup.cfg`, might require you to run `pip install -e .` again.
@@ -49,7 +65,8 @@ Optional and needed only once after `git clone`:
    and checkout the configuration under `.pre-commit-config.yaml`.
    The `-n, --no-verify` flag of `git commit` can be used to deactivate pre-commit hooks temporarily.
 
-## Dependency Management & Reproducibility
+<a name="dependency-management"></a>
+### Dependency Management & Reproducibility
 
 1. Always keep your abstract (unpinned) dependencies updated in `environment.yml` and eventually
    in `setup.cfg` if you want to ship and install your package via `pip` later on.
@@ -63,7 +80,7 @@ Optional and needed only once after `git clone`:
    ```bash
    conda env update -f environment.lock.yml --prune
    ```
-## Project Organization
+### Project Organization
 
 ```
 ├── LICENSE.txt             <- License as chosen on the command-line.
@@ -94,7 +111,7 @@ Optional and needed only once after `git clone`:
 
 <!-- pyscaffold-notes -->
 
-## Note
+### Note
 
 This project has been set up using [PyScaffold] 4.0.1 and the [dsproject extension] 0.6.1.
 
