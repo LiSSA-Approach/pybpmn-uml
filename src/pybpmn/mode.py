@@ -1,5 +1,5 @@
 from enum import Enum
 
 class Mode(Enum):
-    BPMN = "bpmn",
+    BPMN = "bpmn"
     UML_CLASS = "uml_class"
