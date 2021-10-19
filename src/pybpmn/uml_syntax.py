@@ -11,7 +11,11 @@ QUALIFIER = "Qualifier"
 N_ARY_ASSO_DIA = "NAryAssociationDiamond"
 PACKAGE = "Package"
 COMMENT = "Comment"
-UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS, QUALIFIER, N_ARY_ASSO_DIA, PACKAGE, COMMENT]
+OBJECT = "Object"
+UTILITY = "Utility"
+LIBRARY = "Library"
+
+UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS, QUALIFIER, N_ARY_ASSO_DIA, PACKAGE, COMMENT, OBJECT, UTILITY, LIBRARY]
 
 # All available UML label categories
 LABEL = "Label"
@@ -44,6 +48,9 @@ CATEGORY_TO_LONG_NAME = {
     N_ARY_ASSO_DIA: "N-Ary Association Diamond",
     PACKAGE: "Package",
     COMMENT: "Comment",
+    OBJECT: "Object",
+    UTILITY: "Utility",
+    LIBRARY: "Library",
     LABEL: "Label",
     ASSOCIATION: "Association",
     AGGREGATION: "Aggregation",
