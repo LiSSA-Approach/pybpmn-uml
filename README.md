@@ -14,6 +14,11 @@ You can convert the example dataset into a [COCO] dataset by executing the [dump
 python scripts/dump_coco.py ./example-dataset/uml-dataset ./example-dataset/coco
 ```
 
+It is also still possible to convert the [hdBPMN] dataset into a [COCO] dataset with the following command:
+```shell
+python scripts/dump_coco.py path/to/hdBPMN path/to/target/coco/directory/hdbpmn --mode=bpmn
+```
+
 [Installation](#installation), [Development](#development) and [Dependency Management](#dependency-management) hasn't changed.
 
 ## README of original repository - pybmn
