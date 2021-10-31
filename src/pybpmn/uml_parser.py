@@ -38,7 +38,8 @@ class UmlParser:
                 uml_syntax.REALIZATION: 20,
                 uml_syntax.ASSOCIATION: 20,
                 uml_syntax.AGGREGATION: 50,
-                uml_syntax.COMPOSITION: 50
+                uml_syntax.COMPOSITION: 50,
+                uml_syntax.COMMENT_CONNECTION: 20
             },
             img_max_size_ref: int = 1000,
             excluded_categories: Set[str] = None,
