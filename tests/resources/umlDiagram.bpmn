@@ -24,7 +24,7 @@
     </uml:Interface>
     <uml:Aggregation id="Aggregation_1wu07wq" sourceRef="Class_09fpan1" targetRef="Class_1lhjhto" />
     <uml:Extension id="Extension_189dkip" sourceRef="Class_0nlf33i" targetRef="Class_1lhjhto" />
-    <uml:Association id="Association_04k7nxy" sourceRef="Class_0nlf33i" targetRef="Class_08l3q34" directed="true" />
+    <uml:Association id="Association_04k7nxy" sourceRef="Class_0nlf33i" targetRef="Class_08l3q34" has_arrowhead="true" />
     <uml:Realization id="Realization_1gy4xbe" sourceRef="Class_08l3q34" targetRef="Interface_00l70d3" />
     <uml:Dependency id="Dependency_08ts2ks" sourceRef="Class_09fpan1" targetRef="Interface_00l70d3" />
     <uml:Label id="Label_10wvj1i" belongs_to="Aggregation_1wu07wq" label_type="target_multiplicity">

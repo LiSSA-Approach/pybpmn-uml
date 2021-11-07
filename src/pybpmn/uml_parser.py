@@ -14,7 +14,8 @@ from pybpmn.constants import (
     ARROW_NEXT_REL,
     ARROW_PREV_REL,
     ARROW_RELATIONS,
-    BELONGS_TO_REL
+    BELONGS_TO_REL      # UML-Extension: belongs_to is used instead of text_belongs_to because
+                        # other elements than text also can have a belongs to relation (e.g. quantifier)
 )
 
 from pybpmn.util import bounds_to_bb, to_int_or_float, get_omgdi_ns, parse_annotation_background_width
@@ -31,14 +32,14 @@ def parse_bpmn_anns(bpmn_path: Path):
 class UmlParser:
     def __init__(
             self,
-            # TODO: These marker_min_widths need to be adjusted at some point
+            # Defines min width and height of edge bounding boxes, because marker sizes (e.g. arrow heads) are not considered in BPMN XML file
             marker_min_widths: dict = {
                 uml_syntax.DEPENDENCY: 20,
                 uml_syntax.EXTENSION: 20,
                 uml_syntax.REALIZATION: 20,
                 uml_syntax.ASSOCIATION: 20,
-                uml_syntax.AGGREGATION: 50,
-                uml_syntax.COMPOSITION: 50,
+                uml_syntax.AGGREGATION: 20,
+                uml_syntax.COMPOSITION: 20,
                 uml_syntax.COMMENT_CONNECTION: 20
             },
             img_max_size_ref: int = 1000,
@@ -166,7 +167,7 @@ def get_tag_without_ns(element: Element):
     return tag_str[tag_str.find("}") + 1:]
 
 
-def get_category(bpmndi_element: Element, model_element: Element):
+def get_category(model_element: Element):
     """inverse operation of get_tag"""
 
     # remove namespace from tag
@@ -204,7 +205,7 @@ def _edge_to_anns(edge: Element, model_element: Element, id_to_shape_ann: Dict[s
      </bpmndi:BPMNEdge>
      Examples model_element: see parse_edge_attribs()
     """
-    category = get_category(edge, model_element)
+    category = get_category(model_element)
 
     ns = get_omgdi_ns(edge)
     waypoints = np.array(
@@ -223,7 +224,7 @@ def _edge_to_anns(edge: Element, model_element: Element, id_to_shape_ann: Dict[s
 
 
 def _shape_to_anns(shape: Element, model_element: Element) -> List[Annotation]:
-    category = get_category(shape, model_element)
+    category = get_category(model_element)
 
     shape_ann = Annotation(category, bb=_child_bounds_to_bb(shape), **model_element.attrib)
     if get_tag_without_ns(model_element) == uml_syntax.LABEL:
@@ -241,6 +242,20 @@ def _parse_edge_attribs(model_element):
     tag = get_tag_without_ns(model_element)
 
     if tag in uml_syntax.UML_EDGE_CATEGORIES:
+
+        # UML-Extension: These connections could have an arrowhead. If has_arrowhead is False, it doesn't appear in the XML file, because
+        # that's their default value. So if has_arrowhead is None, it should be actually false
+        if (tag == uml_syntax.ASSOCIATION or tag == uml_syntax.AGGREGATION or tag == uml_syntax.COMPOSITION) and (attrib.get('has_arrowhead') == None):
+            attrib['has_arrowhead'] = "false"
+
+        # UML-Extension: In UML, not all edges are directed like in BPMN. Associations without an arrowhead are undirected
+        # On the other hand, aggregations and compositions with an arrowhead are still directed, because the diamond is always
+        # at the source of the connection
+        if tag == uml_syntax.ASSOCIATION:
+            attrib['directed'] = attrib.get('has_arrowhead')
+        else:
+            attrib['directed'] = "true"
+
         for old, new in BPMN_ATTRIB_TO_RELATION.items():
             attrib[new] = attrib.pop(old)
     else:
