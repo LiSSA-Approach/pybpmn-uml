@@ -7,12 +7,13 @@ import yamlu
 from yamlu.coco import Dataset
 from yamlu.img import AnnotatedImage
 
-from pybpmn.constants import ARROW_KEYPOINT_FIELDS, RELATIONS
+from pybpmn.constants import ARROW_KEYPOINT_FIELDS, RELATIONS, UNITE_CATEGORIES
 from pybpmn.uml_parser import UmlParser
 from pybpmn.uml_syntax import (
     UML_EDGE_CATEGORIES,
     CATEGORY_GROUPS,
-    CATEGORY_TO_LONG_NAME
+    CATEGORY_TO_LONG_NAME,
+    CATEGORY_TRANSLATE_DICT
 )
 
 _logger = logging.getLogger(__name__)
@@ -23,6 +24,8 @@ class UmlDataset(Dataset):
             self,
             uml_dataset_root: Union[Path, str],
             coco_dataset_root: Union[Path, str],
+            unite_categories: bool = UNITE_CATEGORIES,
+            category_translate_dict: Dict[str, str] = CATEGORY_TRANSLATE_DICT,
             keypoint_fields: List[str] = ARROW_KEYPOINT_FIELDS,
             relation_fields: List[str] = RELATIONS,
             **parser_kwargs
@@ -30,6 +33,9 @@ class UmlDataset(Dataset):
         uml_dataset_root = Path(uml_dataset_root) if isinstance(uml_dataset_root, str) else uml_dataset_root
         assert uml_dataset_root.exists(), f"{uml_dataset_root} does not exist!"
         self.uml_dataset_root = uml_dataset_root.resolve() if not uml_dataset_root.is_absolute() else uml_dataset_root
+
+        self.unite_categories = unite_categories
+        self.category_translate_dict = category_translate_dict
 
         self.split_to_bpmn_paths = self.get_split_to_bpmn_paths()
         self.bpmn_parser = UmlParser(**parser_kwargs)
@@ -56,6 +62,9 @@ class UmlDataset(Dataset):
         for a in ai.annotations:
             if "id" in a:
                 a.bpmn_id = a.id
+            # Unite categories defined in ./uml_syntax.py if Setting "UNITE_CATEGORIES" in ./constants.py is True
+            if self.unite_categories and a.category in self.category_translate_dict.keys():
+                a.category = self.category_translate_dict[a.category]
 
         return ai
 
@@ -111,6 +120,8 @@ class UmlDataset(Dataset):
             for category in categories:
                 if category in self.bpmn_parser.excluded_categories:
                     continue
+                if self.unite_categories:
+                    category = self.category_translate_dict.get(category, category)
                 if category in seen_cats:
                     continue
                 seen_cats.add(category)

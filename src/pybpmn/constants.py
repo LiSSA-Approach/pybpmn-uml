@@ -13,4 +13,8 @@ ARROW_RELATIONS = (ARROW_PREV_REL, ARROW_NEXT_REL)
 DEFAULT_MODE = Mode.UML_CLASS
 BELONGS_TO_REL = "belongs_to"
 
+# If this is activated, UML nodes Class, Interface, AbstractClass, Object, Utility and Library will be united to ClassNode
+# Category_translate_dict is defined in uml_syntax
+UNITE_CATEGORIES = True
+
 RELATIONS = (*ARROW_RELATIONS, TEXT_BELONGS_TO_REL, BELONGS_TO_REL)
