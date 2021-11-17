@@ -15,7 +15,7 @@ OBJECT = "Object"
 UTILITY = "Utility"
 LIBRARY = "Library"
 
-# Abstract type, will only appear in COCO categories if "UNITE_CATEGORIES" in ./constants.py is True
+# Will only appear in COCO categories if "UNITE_CATEGORIES" in ./constants.py is True
 CLASS_NODE = "ClassNode"
 
 UML_NODE_CATEGORIES = [CLASS, INTERFACE, ENUMERATION, ABSTRACT_CLASS, QUALIFIER, N_ARY_ASSO_DIA, PACKAGE, COMMENT, OBJECT, UTILITY, LIBRARY]
@@ -32,6 +32,11 @@ EXTENSION = "Extension"
 DEPENDENCY = "Dependency"
 REALIZATION = "Realization"
 COMMENT_CONNECTION = "CommentConnection"
+
+# Will only appear in COCO categories if "SPLIT_ASSOCIATION" in ./constants.py is True
+ASSOCIATION_UNIDIRECTIONAL = "AssociationUnidirectional"
+ASSOCIATION_BIDIRECTIONAL = "AssociationBidirectional"
+
 UML_EDGE_CATEGORIES = [ASSOCIATION, AGGREGATION, COMPOSITION, EXTENSION, DEPENDENCY, REALIZATION, COMMENT_CONNECTION]
 
 # All available UML category groups
@@ -62,7 +67,9 @@ CATEGORY_TO_LONG_NAME = {
     DEPENDENCY: "Dependency",
     REALIZATION: "Realization",
     COMMENT_CONNECTION: "Comment Connection",
-    CLASS_NODE: "Class Node"
+    CLASS_NODE: "Class Node",
+    ASSOCIATION_BIDIRECTIONAL: "Bidirectional Association",
+    ASSOCIATION_UNIDIRECTIONAL: "Unidirectional Association",
 }
 
 ALL_CATEGORIES = yamlu.flatten(CATEGORY_GROUPS.values())

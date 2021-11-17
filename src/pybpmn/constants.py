@@ -17,4 +17,8 @@ BELONGS_TO_REL = "belongs_to"
 # Category_translate_dict is defined in uml_syntax
 UNITE_CATEGORIES = True
 
+# If this is activated, UML edge Association will be split to UnidirectionalAssociation and BidirectionalAssociation
+# depending on "has_arrowhead"/"directed" attribute
+SPLIT_ASSOCIATION = True
+
 RELATIONS = (*ARROW_RELATIONS, TEXT_BELONGS_TO_REL, BELONGS_TO_REL)

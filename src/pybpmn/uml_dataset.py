@@ -7,9 +7,12 @@ import yamlu
 from yamlu.coco import Dataset
 from yamlu.img import AnnotatedImage
 
-from pybpmn.constants import ARROW_KEYPOINT_FIELDS, RELATIONS, UNITE_CATEGORIES
+from pybpmn.constants import ARROW_KEYPOINT_FIELDS, RELATIONS, UNITE_CATEGORIES, SPLIT_ASSOCIATION
 from pybpmn.uml_parser import UmlParser
 from pybpmn.uml_syntax import (
+    ASSOCIATION,
+    ASSOCIATION_BIDIRECTIONAL,
+    ASSOCIATION_UNIDIRECTIONAL,
     UML_EDGE_CATEGORIES,
     CATEGORY_GROUPS,
     CATEGORY_TO_LONG_NAME,
@@ -26,6 +29,7 @@ class UmlDataset(Dataset):
             coco_dataset_root: Union[Path, str],
             unite_categories: bool = UNITE_CATEGORIES,
             category_translate_dict: Dict[str, str] = CATEGORY_TRANSLATE_DICT,
+            split_association: bool = SPLIT_ASSOCIATION,
             keypoint_fields: List[str] = ARROW_KEYPOINT_FIELDS,
             relation_fields: List[str] = RELATIONS,
             **parser_kwargs
@@ -36,6 +40,7 @@ class UmlDataset(Dataset):
 
         self.unite_categories = unite_categories
         self.category_translate_dict = category_translate_dict
+        self.split_association = split_association
 
         self.split_to_bpmn_paths = self.get_split_to_bpmn_paths()
         self.bpmn_parser = UmlParser(**parser_kwargs)
@@ -66,6 +71,13 @@ class UmlDataset(Dataset):
             if self.unite_categories and a.category in self.category_translate_dict.keys():
                 a.category = self.category_translate_dict[a.category]
 
+            # Split Association into AssociationUnidirectional and AssociationBidirectional depending on
+            # "directed" attribute if Setting "SPLIT_ASSOCIATION" in ./constants.py is True
+            if self.split_association and a.category == ASSOCIATION:
+                if a.directed == "true":
+                    a.category = ASSOCIATION_UNIDIRECTIONAL
+                else:
+                    a.category = ASSOCIATION_BIDIRECTIONAL
         return ai
 
     @property
@@ -122,6 +134,12 @@ class UmlDataset(Dataset):
                     continue
                 if self.unite_categories:
                     category = self.category_translate_dict.get(category, category)
+                # If split association is activated, ignore Association
+                # and add AssociationUnidirectional and AssociationBidirectional to categories
+                if self.split_association and category == ASSOCIATION:
+                    categories.append(ASSOCIATION_UNIDIRECTIONAL)
+                    categories.append(ASSOCIATION_BIDIRECTIONAL)
+                    continue
                 if category in seen_cats:
                     continue
                 seen_cats.add(category)
