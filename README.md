@@ -1,6 +1,6 @@
 ![run_tests workflow](https://github.com/dwslab/pybpmn/actions/workflows/run_tests.yaml/badge.svg)
 
-# pybmn-uml 
+# pybpmn-uml 
 
 This fork aims to extend [pybpmn](https://github.com/dwslab/pybpmn) to handle UML class diagram images annotated with the [uml-image-annotator](https://github.com/LiSSA-Approach/uml-image-annotator) and to convert them into a [COCO] dataset.
 
@@ -21,7 +21,7 @@ python scripts/dump_coco.py path/to/hdBPMN path/to/target/coco/directory/hdbpmn 
 
 [Installation](#installation), [Development](#development) and [Dependency Management](#dependency-management) hasn't changed.
 
-## README of original repository - pybmn
+## README of original repository - pybpmn
 
 Starter code for using the [hdBPMN] dataset for diagram recognition research.
 
